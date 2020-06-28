@@ -1,2 +1,2 @@
-# PoC_Calculadora_Sanitas
-Prueba Técnica Sanitas:  Calculadora
+# Prueba Técnica Sanitas - Calculadora
+#### Instrucciones para la generación del fichero JAR y ejecución del mismo
