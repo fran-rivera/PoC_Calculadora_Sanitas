@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class CalculadoraControllerTest {
@@ -23,9 +24,33 @@ public class CalculadoraControllerTest {
         Operador operador = Operador.RESTAR;
         double expected = 0;
 
+        expected = this.getResultCalculate(op1,op2,operador);
+        doReturn(expected).when(calculadoraService).calcular(op1,op2,operador);
+
         CalculadoraController sut = new CalculadoraController(calculadoraService);
-        assertEquals(expected,sut.calcular(op1,op2,operador));
+        double result = sut.calcular(op1,op2,operador);
 
+        verify(calculadoraService, times(1)).calcular(op1,op2,operador);
+        assertEquals(expected,result);
 
+    }
+
+    private double getResultCalculate(double op1, double op2, Operador operador){
+        double result = 0;
+
+        switch (operador) {
+            case SUMAR:
+                result = op1 + op2;
+                break;
+
+            case RESTAR:
+                result = op1 - op2;
+                break;
+
+            default:
+                result = 0;
+
+        }
+        return result;
     }
 }

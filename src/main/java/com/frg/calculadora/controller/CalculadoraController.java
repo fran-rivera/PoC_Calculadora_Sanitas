@@ -23,8 +23,6 @@ public class CalculadoraController {
     @GetMapping("/calculate")
     public double calcular(double op1, double op2, Operador operador) {
 
-        double result = 0;
-
-        return result;
+        return calculadoraService.calcular(op1,op2,operador);
     }
 }
