@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.frg</groupId>
 	<artifactId>calculadora</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>calculadora</name>
 	<description>Microservicio calculadora</description>
 
