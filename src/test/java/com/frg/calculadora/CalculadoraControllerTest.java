@@ -1,7 +1,10 @@
 package com.frg.calculadora;
 
+import com.frg.calculadora.base.CalculadoraContext;
 import com.frg.calculadora.controller.CalculadoraController;
 import com.frg.calculadora.service.CalculadoraService;
+import com.frg.calculadora.strategies.Restar;
+import com.frg.calculadora.strategies.Sumar;
 import com.frg.calculadora.utils.Operador;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -37,14 +40,17 @@ public class CalculadoraControllerTest {
 
     private double getResultCalculate(double op1, double op2, Operador operador){
         double result = 0;
+        CalculadoraContext calculadoraContext;
 
         switch (operador) {
             case SUMAR:
-                result = op1 + op2;
+                calculadoraContext = new CalculadoraContext(new Sumar());
+                result = calculadoraContext.calcular(op1, op2);
                 break;
 
             case RESTAR:
-                result = op1 - op2;
+                calculadoraContext = new CalculadoraContext(new Restar());
+                result = calculadoraContext.calcular(op1, op2);
                 break;
 
             default:
