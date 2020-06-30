@@ -1,5 +1,6 @@
 package com.frg.calculadora.controller;
 
+import com.frg.calculadora.model.CalculadoraResponse;
 import com.frg.calculadora.service.CalculadoraService;
 import com.frg.calculadora.utils.Operador;
 import io.corp.calculator.TracerImpl;
@@ -25,13 +26,17 @@ public class CalculadoraController {
     private TracerImpl tracer = new TracerImpl();
 
     @GetMapping("/calculate")
-    public double calcular(double op1, double op2, Operador operador) {
+    public CalculadoraResponse calcular(double op1, double op2, Operador operador) {
 
-        double result = 0;
+        CalculadoraResponse calculadoraResponse = new CalculadoraResponse();
 
-        result = calculadoraService.calcular(op1,op2,operador);
-        tracer.trace(result);
+        calculadoraResponse.setOperando1(String.valueOf(op1));
+        calculadoraResponse.setOperando2(String.valueOf(op2));
+        calculadoraResponse.setOperador(operador);
+        calculadoraResponse.setResultado(calculadoraService.calcular(op1,op2,operador));
 
-        return result;
+        tracer.trace(calculadoraResponse.getResultado());
+
+        return calculadoraResponse;
     }
 }

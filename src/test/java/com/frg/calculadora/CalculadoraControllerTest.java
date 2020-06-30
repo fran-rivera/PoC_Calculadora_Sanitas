@@ -2,6 +2,7 @@ package com.frg.calculadora;
 
 import com.frg.calculadora.base.CalculadoraContext;
 import com.frg.calculadora.controller.CalculadoraController;
+import com.frg.calculadora.model.CalculadoraResponse;
 import com.frg.calculadora.service.CalculadoraService;
 import com.frg.calculadora.strategies.Restar;
 import com.frg.calculadora.strategies.Sumar;
@@ -31,10 +32,10 @@ public class CalculadoraControllerTest {
         doReturn(expected).when(calculadoraService).calcular(op1,op2,operador);
 
         CalculadoraController sut = new CalculadoraController(calculadoraService);
-        double result = sut.calcular(op1,op2,operador);
+        CalculadoraResponse calculadoraResponse = sut.calcular(op1,op2,operador);
 
         verify(calculadoraService, times(1)).calcular(op1,op2,operador);
-        assertEquals(expected,result);
+        assertEquals(expected,calculadoraResponse.getResultado());
 
     }
 
