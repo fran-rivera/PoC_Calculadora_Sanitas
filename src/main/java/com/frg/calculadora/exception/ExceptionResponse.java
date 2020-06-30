@@ -2,6 +2,9 @@ package com.frg.calculadora.exception;
 
 import java.util.Date;
 
+/**
+ * POJO respuesta excepciones
+ */
 public class ExceptionResponse {
 	private Date timestamp;
 	private String mensaje;

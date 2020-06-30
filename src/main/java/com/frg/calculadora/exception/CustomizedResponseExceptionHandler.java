@@ -10,6 +10,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.Date;
 
+/**
+ * Manejador de excepciones: Parámetros de entrada incorrectos
+ */
 @RestControllerAdvice
 public class CustomizedResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
