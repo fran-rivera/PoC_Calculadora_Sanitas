@@ -28,7 +28,7 @@ public class CalculadoraService {
                 break;
 
             default:
-                result = 0;
+                throw new UnsupportedOperationException();
 
         }
 
